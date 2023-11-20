@@ -25,7 +25,7 @@ If you provide two params of the same value, the response will contain only one 
 
 I used a beta API key to test this project myself, and due to the limit of 1,000 requests per day, I set hard limit of 50 queries per request to this service, since every query will trigger a new call to Giphy's API.
 
-For each unique term you provide, there will be a maximum of 25 results. This number can be changed in query params, and I deally it should be a variable that the user can set within bounds of API permissions and bandwith available.
+For each unique term you provide, there will be a maximum of 25 results. This number can be changed in query params, and ideally it should be a variable that the user can set within bounds of API permissions and bandwith available.
 
 The order of the output is not guaranteed, and it will not necessarily match the order in which the params were provided.
 
@@ -66,5 +66,5 @@ go test ./...
 
 9. __Adding More Tests__: I added tests for the API and the set that I created. I would also want to add tests to the service itself and the web package.
 
-10. __Monitoring__: We would want to watch the performance of the service as well as the processes that it runs. To that end, we woudl need to leverage a monitoring system such as Prometheus and a log aggregator such as Datadog. This will also require the addition of searchable and IDed log statements. I attemted this effort in the project by creating a ULID for each request, but I would like to add more logs and more infomation per log, such as user, calling ip, etc.
+10. __Monitoring__: We would want to watch the performance of the service as well as the processes that it runs. To that end, we would need to leverage a monitoring system such as Prometheus and a log aggregator such as Datadog. This will also require the addition of searchable and IDed log statements. I attemted this effort in the project by creating a ULID for each request, but I would like to add more logs and more infomation per log, such as user, calling ip, etc.
 

@@ -39,17 +39,17 @@ func (a *App) searchGifs(w http.ResponseWriter, r *http.Request) {
 	// for each search param run a go routine that will make a request to giphy
 	// save the results in a slice
 	// wait for all go routines to finish
-	results := []giphy_client.Response{}
+	results := make([]giphy_client.Response, len(termsSet.Elements()))
 	var wg sync.WaitGroup
-	for _, v := range termsSet.Elements() {
+	for i, v := range termsSet.Elements() {
 		wg.Add(1)
-		go func(v string) {
+		go func(i int, v string) {
 			defer wg.Done()
 			// get gifs from giphy
 			gifs := a.gifClient.Search(v, a.logger)
 			// append to results
-			results = append(results, gifs)
-		}(v)
+			results[i] = gifs
+		}(i, v)
 	}
 	wg.Wait()
 
